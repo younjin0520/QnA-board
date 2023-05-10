@@ -1,0 +1,28 @@
+package com.mysite.springboard.entity;
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.time.LocalDateTime;
+
+/**
+ * Entity의 각 프로퍼티들은
+ * Table의 컬럼이 됨
+ */
+@Getter
+@Setter
+@Entity
+public class Question {
+    @Id // 기본 키로 지정
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(length = 200)
+    private String subject;
+
+    @Column(columnDefinition = "TEXT")
+    private String content;
+
+    private LocalDateTime createDate;
+}
