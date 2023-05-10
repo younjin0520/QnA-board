@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * Entity의 각 프로퍼티들은
@@ -25,4 +26,8 @@ public class Question {
     private String content;
 
     private LocalDateTime createDate;
+
+    // cascade type : 질문 삭제 시 답변 모두 삭제
+    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
+    private List<Answer> answerList;
 }
