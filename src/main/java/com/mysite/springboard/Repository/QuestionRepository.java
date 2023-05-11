@@ -3,8 +3,13 @@ package com.mysite.springboard.Repository;
 import com.mysite.springboard.entity.Question;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 /**
  * JpaRepository를 상속할 때는 제네릭스 타입으로 <repository 대상이 되는 엔티티 타입, 해당 엔티티의 Pk 타입> 지정
  */
 public interface QuestionRepository extends JpaRepository<Question, Integer> {
+    Question findBySubject(String subject);
+    Question findBySubjectAndContent(String subject, String content);
+    List<Question> findBySubjectLike(String subject); // 특정 문자열이 포함된 데이터 조회
 }
