@@ -1,5 +1,6 @@
-package com.mysite.springboard.entity;
+package com.mysite.springboard.answer;
 
+import com.mysite.springboard.question.Question;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

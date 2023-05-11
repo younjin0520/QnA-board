@@ -1,12 +1,11 @@
 package com.mysite.springboard;
 
-import com.mysite.springboard.Repository.QuestionRepository;
-import com.mysite.springboard.entity.Question;
+import com.mysite.springboard.question.QuestionRepository;
+import com.mysite.springboard.question.Question;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
