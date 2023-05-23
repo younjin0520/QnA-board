@@ -1,0 +1,18 @@
+<!-- root template-->
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS-->
+  <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
+  <!-- sbb CSS-->
+  <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+  <title>Hello, sbb!</title>
+</head>
+<body>
+<!-- child template에서는 이 부분만 구현해도 됨-->
+<th:block layout:fragement="content"></th:block>
+</body>
+</html>
