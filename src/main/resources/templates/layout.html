@@ -1,18 +1,18 @@
-<!-- root template-->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <!-- Required meta tags -->
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Bootstrap CSS-->
+  <!-- Bootstrap CSS -->
   <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
-  <!-- sbb CSS-->
+  <!-- sbb CSS -->
   <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
   <title>Hello, sbb!</title>
 </head>
 <body>
-<!-- child template에서는 이 부분만 구현해도 됨-->
-<th:block layout:fragement="content"></th:block>
+<!-- 기본 템플릿 안에 삽입될 내용 Start -->
+<th:block layout:fragment="content"></th:block>
+<!-- 기본 템플릿 안에 삽입될 내용 End -->
 </body>
 </html>
