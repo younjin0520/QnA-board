@@ -2,6 +2,9 @@ package com.mysite.springboard.question;
 
 import com.mysite.springboard.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -15,6 +18,12 @@ public class QuestionService {
 
     public List<Question> getList() {
         return this.questionRepository.findAll();
+    }
+
+    //특정 페이지만 조회
+    public Page<Question> getList(int page) {
+        Pageable pageable = PageRequest.of(page, 10);
+        return this.questionRepository.findAll(pageable);
     }
 
     public Question getQuestion(Integer id) {
