@@ -23,7 +23,8 @@ public class SecurityConfig {
          http.authorizeHttpRequests().requestMatchers(new AntPathRequestMatcher("/**")).permitAll()
                  .and().csrf().ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**"))
                  .and().headers().addHeaderWriter(new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN))
-                 .and().formLogin().loginPage("/user/login").defaultSuccessUrl("/"); // 로그인 설정을 담당하는 부분, /user/login -> 로그인 페이지, / -> 로그인 성공 시 이동하는 default 페이지
+                 .and().formLogin().loginPage("/user/login").defaultSuccessUrl("/") // 로그인 설정을 담당하는 부분, /user/login -> 로그인 페이지, / -> 로그인 성공 시 이동하는 default 페이지
+                 .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/user/logout")).logoutSuccessUrl("/").invalidateHttpSession(true);
         return http.build();
     }
 
