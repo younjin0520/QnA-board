@@ -1,6 +1,7 @@
 package com.mysite.springboard.answer;
 
 import com.mysite.springboard.question.Question;
+import com.mysite.springboard.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,4 +24,6 @@ public class Answer {
 
     private LocalDateTime createDate;
 
+    @ManyToOne
+    private SiteUser author;
 }

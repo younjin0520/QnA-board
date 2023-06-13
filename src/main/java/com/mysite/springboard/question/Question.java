@@ -1,6 +1,7 @@
 package com.mysite.springboard.question;
 
 import com.mysite.springboard.answer.Answer;
+import com.mysite.springboard.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,4 +32,7 @@ public class Question {
     // cascade type : 질문 삭제 시 답변 모두 삭제
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
     private List<Answer> answerList;
+
+    @ManyToOne
+    private SiteUser author;
 }
