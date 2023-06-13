@@ -1,7 +1,10 @@
 package com.mysite.springboard;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -19,12 +22,18 @@ public class SecurityConfig {
 
          http.authorizeHttpRequests().requestMatchers(new AntPathRequestMatcher("/**")).permitAll()
                  .and().csrf().ignoringRequestMatchers(new AntPathRequestMatcher("/h2-console/**"))
-                 .and().headers().addHeaderWriter(new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN));
+                 .and().headers().addHeaderWriter(new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN))
+                 .and().formLogin().loginPage("/user/login").defaultSuccessUrl("/"); // 로그인 설정을 담당하는 부분, /user/login -> 로그인 페이지, / -> 로그인 성공 시 이동하는 default 페이지
         return http.build();
     }
 
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
     }
 }
