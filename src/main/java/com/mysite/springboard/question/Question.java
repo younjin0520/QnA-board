@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Entity의 각 프로퍼티들은
@@ -37,4 +38,7 @@ public class Question {
     private SiteUser author;
 
     private LocalDateTime modifyDate;   // 수정일시
+
+    @ManyToMany
+    Set<SiteUser> voter;    // 추천인
 }
