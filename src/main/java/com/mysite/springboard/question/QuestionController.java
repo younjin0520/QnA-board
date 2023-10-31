@@ -1,6 +1,8 @@
 package com.mysite.springboard.question;
 
+import com.mysite.springboard.answer.Answer;
 import com.mysite.springboard.answer.AnswerForm;
+import com.mysite.springboard.answer.AnswerService;
 import com.mysite.springboard.user.SiteUser;
 import com.mysite.springboard.user.UserService;
 import jakarta.validation.Valid;
@@ -23,6 +25,7 @@ import java.util.List;
 public class QuestionController {
 
     private final QuestionService questionService;
+    private final AnswerService answerService;
     private final UserService userService;
 
     @GetMapping("/list")
@@ -36,9 +39,14 @@ public class QuestionController {
 
     //상세페이지 매핑
     @GetMapping(value = "/detail/{id}")
-    public String detail(Model model, @PathVariable("id") Integer id, AnswerForm answerForm) {
+    public String detail(Model model,
+                         @PathVariable("id") Integer id,
+                         @RequestParam(value = "no", defaultValue = "0") int no,
+                         AnswerForm answerForm) {
         Question question = this.questionService.getQuestion(id);
+        Page<Answer> paging = this.answerService.getAnswerList(no, question);
         model.addAttribute("question", question);
+        model.addAttribute("paging", paging);
         return "question_detail";
     }
 

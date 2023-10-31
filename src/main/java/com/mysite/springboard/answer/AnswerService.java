@@ -4,6 +4,9 @@ import com.mysite.springboard.DataNotFoundException;
 import com.mysite.springboard.question.Question;
 import com.mysite.springboard.user.SiteUser;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -52,5 +55,10 @@ public class AnswerService {
     public void vote(Answer answer, SiteUser siteUser) {
         answer.getVoter().add(siteUser);
         this.answerRepository.save(answer);
+    }
+
+    public Page<Answer> getAnswerList(int no, Question question) {
+        Pageable pageable = PageRequest.of(no, 10);
+        return this.answerRepository.findByQuestion(pageable, question);
     }
 }
