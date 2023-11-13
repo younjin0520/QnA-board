@@ -42,11 +42,13 @@ public class QuestionController {
     public String detail(Model model,
                          @PathVariable("id") Integer id,
                          @RequestParam(value = "no", defaultValue = "0") int no,
+                         @RequestParam(name = "sort", defaultValue = "latest") String sort,
                          AnswerForm answerForm) {
         Question question = this.questionService.getQuestion(id);
-        Page<Answer> paging = this.answerService.getAnswerList(no, question);
+        Page<Answer> paging = this.answerService.getAnswerList(no, question, sort);
         model.addAttribute("question", question);
         model.addAttribute("paging", paging);
+        model.addAttribute("sort", sort);
         return "question_detail";
     }
 

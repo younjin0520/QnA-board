@@ -57,12 +57,16 @@ public class AnswerService {
     // 추천인 저장
     public void vote(Answer answer, SiteUser siteUser) {
         answer.getVoter().add(siteUser);
+        int voteCount = answer.getVoter().size();
+        answer.setVoterCount(voteCount);
+
         this.answerRepository.save(answer);
     }
 
-    public Page<Answer> getAnswerList(int no, Question question) {
+    public Page<Answer> getAnswerList(int no, Question question, String sortBy) {
         List<Sort.Order> sort = new ArrayList<>();
-        sort.add(Sort.Order.desc("createDate"));
+        if (sortBy.equals("latest")) sort.add(Sort.Order.desc("createDate"));
+        else sort.add(Sort.Order.desc("voterCount"));
         Pageable pageable = PageRequest.of(no, 10, Sort.by(sort));
         return this.answerRepository.findByQuestion(pageable, question);
     }

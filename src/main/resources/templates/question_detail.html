@@ -45,11 +45,14 @@
         <textarea sec:authorize="isAuthenticated()" th:field="*{content}" rows="10" class="form-control"></textarea>
         <input type="submit" value="답변등록" class="btn btn-primary my-2">
     </form>
+    <!-- 답변 정렬-->
+    <form id="sort-form" method="get">
+        <select class="form-select" id="form-select" name="sort" onchange="this.form.submit()" style="width: 200px; float:right;">
+            <option value="latest" th:selected="${sort == 'latest'}">최신순</option>
+            <option value="recommended" th:selected="${sort == 'recommended'}">추천순</option>
+        </select>
+    </form>
     <!-- 답변의 갯수 표시 -->
-    <select class="form-select" onchange="" style="width: 200px; float:right;">
-        <option selected>최신순</option>
-        <option value="1">추천순</option>
-    </select>
     <h5 class="border-bottom my-3 py-2"
         th:text="|${#lists.size(question.answerList)}개의 답변이 있습니다.|"></h5>
     <!-- 답변 반복 시작 -->
@@ -114,21 +117,22 @@
     <!-- 페이징 처리 끝 -->
 </div>
 <script layout:fragment="script" type="text/javascript">
-const delete_elements = document.getElementsByClassName("delete");
-Array.from(delete_elements).forEach(function(element) {
-    element.addEventListener('click', function() {
-        if(confirm("정말로 삭제하시겠습니까?")) {
-            location.href = this.dataset.uri;
-        };
+    const delete_elements = document.getElementsByClassName("delete");
+    Array.from(delete_elements).forEach(function(element) {
+        element.addEventListener('click', function() {
+            if(confirm("정말로 삭제하시겠습니까?")) {
+                location.href = this.dataset.uri;
+            };
+        });
     });
-});
-const recommend_elements = document.getElementsByClassName("recommend");
-Array.from(recommend_elements).forEach(function(element) {
-    element.addEventListener('click', function() {
-        if(confirm("정말로 추천하시겠습니까?")) {
-            location.href = this.dataset.uri;
-        };
+    const recommend_elements = document.getElementsByClassName("recommend");
+    Array.from(recommend_elements).forEach(function(element) {
+        element.addEventListener('click', function() {
+            console.log("112180720402");
+            if(confirm("정말로 추천하시겠습니까?")) {
+                location.href = this.dataset.uri;
+            };
+        });
     });
-});
 </script>
 </html>
