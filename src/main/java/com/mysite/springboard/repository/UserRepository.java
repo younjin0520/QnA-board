@@ -1,5 +1,6 @@
-package com.mysite.springboard.user;
+package com.mysite.springboard.repository;
 
+import com.mysite.springboard.domain.SiteUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

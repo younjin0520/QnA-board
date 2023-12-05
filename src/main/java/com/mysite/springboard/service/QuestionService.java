@@ -1,8 +1,10 @@
-package com.mysite.springboard.question;
+package com.mysite.springboard.service;
 
 import com.mysite.springboard.DataNotFoundException;
-import com.mysite.springboard.answer.Answer;
-import com.mysite.springboard.user.SiteUser;
+import com.mysite.springboard.domain.Answer;
+import com.mysite.springboard.domain.Question;
+import com.mysite.springboard.domain.SiteUser;
+import com.mysite.springboard.repository.QuestionRepository;
 import jakarta.persistence.criteria.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

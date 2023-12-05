@@ -1,8 +1,10 @@
-package com.mysite.springboard.answer;
+package com.mysite.springboard.service;
 
 import com.mysite.springboard.DataNotFoundException;
-import com.mysite.springboard.question.Question;
-import com.mysite.springboard.user.SiteUser;
+import com.mysite.springboard.repository.AnswerRepository;
+import com.mysite.springboard.domain.Answer;
+import com.mysite.springboard.domain.Question;
+import com.mysite.springboard.domain.SiteUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

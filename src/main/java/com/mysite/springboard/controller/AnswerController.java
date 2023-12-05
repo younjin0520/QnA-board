@@ -1,9 +1,12 @@
-package com.mysite.springboard.answer;
+package com.mysite.springboard.controller;
 
-import com.mysite.springboard.question.Question;
-import com.mysite.springboard.question.QuestionService;
-import com.mysite.springboard.user.SiteUser;
-import com.mysite.springboard.user.UserService;
+import com.mysite.springboard.form.AnswerForm;
+import com.mysite.springboard.service.AnswerService;
+import com.mysite.springboard.domain.Answer;
+import com.mysite.springboard.domain.Question;
+import com.mysite.springboard.service.QuestionService;
+import com.mysite.springboard.domain.SiteUser;
+import com.mysite.springboard.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

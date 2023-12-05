@@ -1,4 +1,4 @@
-package com.mysite.springboard.answer;
+package com.mysite.springboard.form;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;

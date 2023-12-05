@@ -1,29 +1,36 @@
-package com.mysite.springboard.answer;
+package com.mysite.springboard.domain;
 
-import com.mysite.springboard.question.Question;
-import com.mysite.springboard.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
+/**
+ * Entity의 각 프로퍼티들은
+ * Table의 컬럼이 됨
+ */
 @Getter
 @Setter
 @Entity
-public class Answer {
-    @Id
+public class Question {
+    @Id // 기본 키로 지정
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne  // 하나의 질문에 답변 여러개가 달릴 수 있다. - 실제 DB에서 Fk 관계가 생성된다.
-    private Question question;
+    @Column(length = 200)
+    private String subject;
 
     @Column(columnDefinition = "TEXT")
     private String content;
 
     private LocalDateTime createDate;
+
+    // cascade type : 질문 삭제 시 답변 모두 삭제
+    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
+    private List<Answer> answerList;
 
     @ManyToOne
     private SiteUser author;
@@ -31,7 +38,5 @@ public class Answer {
     private LocalDateTime modifyDate;   // 수정일시
 
     @ManyToMany
-    Set<SiteUser> voter;
-
-    Integer voterCount;
+    Set<SiteUser> voter;    // 추천인
 }

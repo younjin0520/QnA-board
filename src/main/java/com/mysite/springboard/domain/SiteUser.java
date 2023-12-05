@@ -1,4 +1,4 @@
-package com.mysite.springboard.user;
+package com.mysite.springboard.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;

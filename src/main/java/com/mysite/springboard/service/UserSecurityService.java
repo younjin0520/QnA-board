@@ -1,5 +1,8 @@
-package com.mysite.springboard.user;
+package com.mysite.springboard.service;
 
+import com.mysite.springboard.domain.SiteUser;
+import com.mysite.springboard.repository.UserRepository;
+import com.mysite.springboard.UserRole;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

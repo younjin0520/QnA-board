@@ -1,9 +1,9 @@
 package com.mysite.springboard;
 
-import com.mysite.springboard.answer.AnswerService;
-import com.mysite.springboard.question.Question;
-import com.mysite.springboard.question.QuestionRepository;
-import com.mysite.springboard.question.QuestionService;
+import com.mysite.springboard.service.AnswerService;
+import com.mysite.springboard.domain.Question;
+import com.mysite.springboard.repository.QuestionRepository;
+import com.mysite.springboard.service.QuestionService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

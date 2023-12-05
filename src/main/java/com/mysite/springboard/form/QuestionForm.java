@@ -1,4 +1,4 @@
-package com.mysite.springboard.question;
+package com.mysite.springboard.form;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;

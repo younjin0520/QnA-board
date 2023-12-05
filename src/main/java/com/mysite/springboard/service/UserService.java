@@ -1,8 +1,10 @@
-package com.mysite.springboard.user;
+package com.mysite.springboard.service;
 
 import java.util.Optional;
 
 import com.mysite.springboard.DataNotFoundException;
+import com.mysite.springboard.domain.SiteUser;
+import com.mysite.springboard.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
